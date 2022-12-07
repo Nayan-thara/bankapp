@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+    <form action="" class="form" >
+      <h1>DEPOSIT</h1>
+      <div class="input-group">
+      
+        <input type="text" name="acno"  id="acno" required="" placeholder="ACCOUNT NUMBER" [(ngModel)]="acno">
+
+       
+      </div>
+      <div class="input-group">
+      
+        <input type="password" name="psw" id="psw" required="" placeholder="PASSWORD"  [(ngModel)]="psw">
+     
+      </div>
+      <div class="input-group">
+      
+        <input type="text" name="amount"  id="amount" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt">
+      </div>
+      
+     <button type="button" class="btn  p-2" (click)="deposit()">deposit</button>
+    </form>
+ 
+
+  
+    <form action="" class="form ms-5" >
+      <H1>WITHDRAW</H1>
+      <div class="input-group">
+      
+        <input type="text" name="acno1"  id="acno1" required=""  placeholder="ACCOUNT NUMBER" [(ngModel)]="acno1" >
+       
+       
+      </div>
+      <div class="input-group">
+      
+        <input type="password" name="psw1" id="psw1" required=""  placeholder="PASSWORD"  [(ngModel)]="psw1">
+        
+      </div>
+      <div class="input-group">
+      
+        <input type="text" name="amount1"  id="amount1" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt1">
+     
+       
+      </div>
+      
+     <button type="button" class="btn  p-2" (click)="withdraw()">withdraw</button>
+    </form>
+  </div>
+
+
+  

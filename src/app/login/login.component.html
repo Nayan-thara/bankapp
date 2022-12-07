@@ -8,18 +8,18 @@
       <h2>Login</h2>
       <div class="input-group">
         <!-- <input type="text" name="loginUser"  id="loginUser" required="" (change)="acnoChange($event)">   -> $event -->
-        <input type="text" name="loginUser"  id="loginUser" required="" #acno>
+        <input type="text" name="loginUser"  id="loginUser" required="" [(ngModel)]="acno">
         <label for="acnum" >ACCOUNT NUMBER</label> 
         <!-- <input type="text " [placeholder]="data"> property binding -->
       </div>
       <div class="input-group">
         <!-- <input type="password" name="loginPassword" id="loginPassword" required="" (change)="pswChange($event)">  $event -->
-        <input type="password" name="loginPassword" id="loginPassword" required="" #psw>
+        <input type="password" name="loginPassword" id="loginPassword" required="" [(ngModel)]="psw">
         <label for="loginPassword">PASSWORD</label>
       </div>
-      <a href="" class="signup">CREATE NEW ACCOUNT</a>
+      <a routerLink="register" class="signup">CREATE NEW ACCOUNT</a>
       <!-- <button type="submit" (click)="login() " class="btn btn-danger">login</button>  //event binding -->
-     <button type="button" class="btn  p-2" (click)="login(acno,psw)">LOGIN</button>
+     <button type="button" class="btn  p-2" (click)="login()">LOGIN</button>
       
      
     </form>
