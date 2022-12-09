@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-    <form action="" class="form" >
+    <form  class="form" (ngSubmit)="register()">
       <h2>REGISTER FORM</h2>
       <div class="input-group">
         <input type="text" name="uname"  id="" required="" [(ngModel)]="uname" >
@@ -14,7 +14,7 @@
         <label for="">PASSWORD</label>
       </div>
  
-     <button type="submit" class="btn  p-2" (click)="register()" >CREATE</button> 
+     <button type="submit" class="btn  p-2" >CREATE</button> 
       
      
     </form>

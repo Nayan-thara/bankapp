@@ -1,49 +1,59 @@
+<h1 style="text-align:center; color:aliceblue; font-family:'Courier New', Courier, monospace">WELCOME {{user}}</h1>
+
+
+<div class="link" >
+  <a routerLink="/transaction" style="color:aliceblue;" class="link" >view transction history</a> 
+  <!-- currectly dashboard -> to local host4200 ->transaction -> we use the / -->
+</div>
+
+
+
 <div class="login-wrapper">
-    <form action="" class="form" >
-      <h1>DEPOSIT</h1>
-      <div class="input-group">
-      
-        <input type="text" name="acno"  id="acno" required="" placeholder="ACCOUNT NUMBER" [(ngModel)]="acno">
 
-       
-      </div>
-      <div class="input-group">
-      
-        <input type="password" name="psw" id="psw" required="" placeholder="PASSWORD"  [(ngModel)]="psw">
-     
-      </div>
-      <div class="input-group">
-      
-        <input type="text" name="amount"  id="amount" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt">
-      </div>
-      
-     <button type="button" class="btn  p-2" (click)="deposit()">deposit</button>
-    </form>
- 
-
+      <form  class="form" (ngSubmit)="deposit()">
+          <h1>DEPOSIT</h1>
+          <div class="input-group">
+          
+            <input type="text" name="acno"  id="acno" required="" placeholder="ACCOUNT NUMBER" [(ngModel)]="acno">
+    
+           
+          </div>
+          <div class="input-group">
+          
+            <input type="password" name="psw" id="psw" required="" placeholder="PASSWORD"  [(ngModel)]="psw">
+         
+          </div>
+          <div class="input-group">
+          
+            <input type="text" name="amount"  id="amount" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt">
+          </div>
+          
+         <button type="submit" class="btn  p-2">deposit</button>
+        </form>
   
-    <form action="" class="form ms-5" >
-      <H1>WITHDRAW</H1>
-      <div class="input-group">
-      
-        <input type="text" name="acno1"  id="acno1" required=""  placeholder="ACCOUNT NUMBER" [(ngModel)]="acno1" >
-       
-       
-      </div>
-      <div class="input-group">
-      
-        <input type="password" name="psw1" id="psw1" required=""  placeholder="PASSWORD"  [(ngModel)]="psw1">
+      <form  class="form ms-5" id="form2" (ngSubmit)="withdraw()">
+        <H1>WITHDRAW</H1>
+        <div class="input-group ">
         
-      </div>
-      <div class="input-group">
-      
-        <input type="text" name="amount1"  id="amount1" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt1">
-     
+          <input type="text" name="acno1"  id="acno1" required=""  placeholder="ACCOUNT NUMBER" [(ngModel)]="acno1" >
+         
+         
+        </div>
+        <div class="input-group">
+        
+          <input type="password" name="psw1" id="psw1" required=""  placeholder="PASSWORD"  [(ngModel)]="psw1">
+          
+        </div>
+        <div class="input-group">
+        
+          <input type="text" name="amount1"  id="amount1" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt1">
        
-      </div>
-      
-     <button type="button" class="btn  p-2" (click)="withdraw()">withdraw</button>
-    </form>
+         
+        </div>
+        
+       <button type="submit" class="btn  p-2" >withdraw</button>
+      </form>
+
   </div>
 
 

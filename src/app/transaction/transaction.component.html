@@ -1,0 +1,16 @@
+<div class="container w-50 mt-5" >
+    <h1 style="color:white; text-align:center; font-family:'Courier New', Courier, monospace;">TRANSACTION HISTORY</h1>
+    <table class="mt-5 border border-light w-75 container" style="background-color:rgba(8, 19, 55, 0.7); ">
+        <thead>
+            <th  class="border border-light" style="color:white; padding: 10px; text-align: center;">TYPE</th>
+            <th  class="border border-light" style="color:white; padding: 10px;  text-align: center;">AMOUNT</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of transaction">
+                <td  class="border border-light" style="color:white; padding: 10px; text-align: center;">{{i.type}}</td>
+                <td  class="border border-light" style="color:white; padding: 10px; text-align: center;">{{i.amount}}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+</div>

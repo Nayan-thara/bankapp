@@ -15,7 +15,7 @@
     width: 100%;
     max-width: 380px;
     padding: 80px 40px 40px;
-    background: rgba(26, 27, 30, 0.7);
+    background:  rgba(8, 19, 55, 0.7);
     border-radius: 10px;
     color: #fff;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.485);
@@ -115,7 +115,35 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .link{
+    width:fit-content ;
+    display: block;
+    border: none;
+    outline: none;
+    background: rgb(72, 72, 229);
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  
+
   @media(orientation:portrait) {
+    .login-wrapper{
+      display: flex;
+      flex-direction: column;
+      margin-top: 25%;
     
+    }
+    .form{
+      margin-top: 5%;
+      background:  rgba(122, 150, 242, 0.212);
+
+    }
     
   }
