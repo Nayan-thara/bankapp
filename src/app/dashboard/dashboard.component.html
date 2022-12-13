@@ -10,46 +10,65 @@
 
 <div class="login-wrapper">
 
-      <form  class="form" (ngSubmit)="deposit()">
+      <form  class="form" (ngSubmit)="deposit()" [formGroup]="depositForm">
           <h1>DEPOSIT</h1>
           <div class="input-group">
-          
-            <input type="text" name="acno"  id="acno" required="" placeholder="ACCOUNT NUMBER" [(ngModel)]="acno">
-    
-           
+            <input type="text" name="acno"  id="acno" required="" placeholder="ACCOUNT NUMBER" formControlName="acno">
           </div>
+
+          <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" > <!-- validation -->
+            <p class="text-danger fs-5" >*invalid acno</p>
+          </div>
+
+
+
           <div class="input-group">
-          
-            <input type="password" name="psw" id="psw" required="" placeholder="PASSWORD"  [(ngModel)]="psw">
-         
+            <input type="password" name="psw" id="psw" required="" placeholder="PASSWORD"  formControlName="psw">
           </div>
+
+          <div *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched" > <!-- validation -->
+            <p class="text-danger fs-5" >*invalid password</p>
+          </div>
+
+
+
           <div class="input-group">
-          
-            <input type="text" name="amount"  id="amount" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt">
+            <input type="text" name="amount"  id="amount" required=""  placeholder="AMOUNT"  formControlName="amnt">
           </div>
+          <div *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched" > <!-- validation -->
+            <p class="text-danger fs-5" >*invalid amount</p>
+          </div>
+
+          
           
          <button type="submit" class="btn  p-2">deposit</button>
         </form>
   
-      <form  class="form ms-5" id="form2" (ngSubmit)="withdraw()">
+      <form  class="form ms-5" id="form2" (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
         <H1>WITHDRAW</H1>
         <div class="input-group ">
-        
-          <input type="text" name="acno1"  id="acno1" required=""  placeholder="ACCOUNT NUMBER" [(ngModel)]="acno1" >
-         
-         
+          <input type="text" name="acno1"  id="acno1" required=""  placeholder="ACCOUNT NUMBER" formControlName="acno1" >
         </div>
+
+        <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" > <!-- validation -->
+          <p class="text-danger fs-5" >*invalid acno</p>
+        </div>
+
         <div class="input-group">
-        
-          <input type="password" name="psw1" id="psw1" required=""  placeholder="PASSWORD"  [(ngModel)]="psw1">
-          
-        </div>
+           <input type="password" name="psw1" id="psw1" required=""  placeholder="PASSWORD"  formControlName="psw1">
+         </div>
+
+          <div *ngIf="this.withdrawForm.get('psw1')?.errors && this.withdrawForm.get('psw1')?.touched" > <!-- validation -->
+                    <p class="text-danger fs-5" >*invalid password</p>
+          </div>
+
         <div class="input-group">
-        
-          <input type="text" name="amount1"  id="amount1" required=""  placeholder="AMOUNT"  [(ngModel)]="amnt1">
-       
-         
+          <input type="text" name="amount1"  id="amount1" required=""  placeholder="AMOUNT"  formControlName="amnt1">
         </div>
+
+        <div *ngIf="this.withdrawForm.get('amnt1')?.errors && this.withdrawForm.get('amnt1')?.touched" > <!-- validation -->
+          <p class="text-danger fs-5" >*invalid amount</p>
+</div>
         
        <button type="submit" class="btn  p-2" >withdraw</button>
       </form>

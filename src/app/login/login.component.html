@@ -4,19 +4,29 @@
 
 
 <div class="login-wrapper">
-    <form  class="form" (ngSubmit)="login()" >
+    <form  class="form" (ngSubmit)="login()" [formGroup]="loginForm" >
       <h2>Login</h2>
       <div class="input-group">
         <!-- <input type="text" name="loginUser"  id="loginUser" required="" (change)="acnoChange($event)">   -> $event -->
-        <input type="text" name="loginUser"  id="loginUser" required="" [(ngModel)]="acno">
+        <input type="text" name="loginUser"  id="loginUser" required="" formControlName="acno">
         <label for="acnum" >ACCOUNT NUMBER</label> 
         <!-- <input type="text " [placeholder]="data"> property binding -->
       </div>
+
+      <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched">
+        <p class="text-danger fs-5">*invalid accountnumber</p>
+      </div>
+
       <div class="input-group">
         <!-- <input type="password" name="loginPassword" id="loginPassword" required="" (change)="pswChange($event)">  $event -->
-        <input type="password" name="loginPassword" id="loginPassword" required="" [(ngModel)]="psw">
+        <input type="password" name="loginPassword" id="loginPassword" required="" formControlName="psw" >
         <label for="loginPassword">PASSWORD</label>
       </div>
+
+      <div *ngIf="this.loginForm.get('psw')?.errors && this.loginForm.get('psw')?.touched">
+        <p class="text-danger fs-5">*invalid password</p>
+      </div>
+
       <a routerLink="register" class="signup">CREATE NEW ACCOUNT</a>
       <!-- <button type="submit" (click)="login() " class="btn btn-danger">login</button>  //event binding -->
      <button type="submit" class="btn  p-2">LOGIN</button>
@@ -26,4 +36,4 @@
   </div>
 
   
-  <form action=""></form>
+  <!-- <form action=""></form> -->
