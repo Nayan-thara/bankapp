@@ -10,3 +10,7 @@ body {
         background: linear-gradient(to right);
     }
   }
+
+  .style{
+    opacity: 0;
+  }

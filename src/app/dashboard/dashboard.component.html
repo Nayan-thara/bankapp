@@ -1,14 +1,23 @@
 <h1 style="text-align:center; color:aliceblue; font-family:'Courier New', Courier, monospace">WELCOME {{user}}</h1>
+<p style="color: aliceblue; text-align: center;">{{dateandtime | date : 'short'}}</p>
+
+<div style="position: relative;">
+  
+    <a routerLink="/transaction" style="color:aliceblue; position: absolute;" class="link" >view transction history</a> 
+    <!-- currectly dashboard -> to local host4200 ->transaction -> we use the / -->
+    <button  type="submit" class="btn bg-danger p-1 me-5 mt-0 div2" (click)="logout()">logout</button>
+    <button  type="submit" class="btn bg-danger p-1 me-5 mt-3 div2" (click)="deleteconfirm()" >delete</button>
+  <app-deleteconfirm [item]="acno"></app-deleteconfirm>
 
 
-<div class="link" >
-  <a routerLink="/transaction" style="color:aliceblue;" class="link" >view transction history</a> 
-  <!-- currectly dashboard -> to local host4200 ->transaction -> we use the / -->
-</div>
+
+
+</div>  
 
 
 
-<div class="login-wrapper">
+
+<div class="login-wrapper" [ngClass]="acno?'style':''">
 
       <form  class="form" (ngSubmit)="deposit()" [formGroup]="depositForm">
           <h1>DEPOSIT</h1>
