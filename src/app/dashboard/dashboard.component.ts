@@ -1,3 +1,4 @@
+import { ResourceLoader } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,18 +27,21 @@ export class DashboardComponent {
 
   constructor(private ds:DataService,private fb:FormBuilder,private router:Router){
     //access the current user name
-    this.user=this.ds.currentuser
-
+    
     this.dateandtime=new Date()
+    
+    if(localStorage.getItem('currentuser')){
+      this.user=JSON.parse(localStorage.getItem('currentuser') || '')
+
+    }
     
   }
 
   ngOnInit(): void{
-    if(!localStorage.getItem('currentacno')){
+    if(!localStorage.getItem('token')){
       alert('please login first')
       this.router.navigateByUrl('')
     }
-
   }
 
   depositForm=this.fb.group({acno:['',[Validators.required,Validators.pattern('[0-9]+')]],psw:['',[Validators.required,Validators.pattern('[0-9a-zA-Z]+')]],amnt:['',[Validators.required,Validators.pattern('[0-9]+')]]})
@@ -49,15 +53,14 @@ export class DashboardComponent {
     var amnt=this.depositForm.value.amnt
 
     if(this.depositForm.valid){
-      const result=this.ds.deposit(acno,psw,amnt)
+      this.ds.deposit(acno,psw,amnt).subscribe((result:any)=>{
+        alert(`${amnt} is credited to your account. BALANCE is  ${result.message}`)
+      },
+      result=>{
+        alert(result.error.message);
+        
+      })
     
-    if(result){ // if there exist a value it is considered as true
-      alert(`${amnt} credited to your account and total balance is ${result}`)
-
-    }
-    else{
-      alert("incorrect acno or password")
-    }
      }
      else{
       alert('invalid form')
@@ -71,11 +74,12 @@ export class DashboardComponent {
     var amnt=this.withdrawForm.value.amnt1
 
     if(this.withdrawForm.valid){
-      const result=this.ds.withdraw(acno,psw,amnt)
-    
-    if(result){
-      alert(`${amnt} is debited and your balance is ${result}`)
-    }
+      this.ds.withdraw(acno,psw,amnt).subscribe((result:any)=>{
+        alert(`${amnt} is debited and your balance is ${result.message}`)
+      },
+      result=>{
+        alert(result.error.message)
+      })
     }
     else{
       alert('invalid form')
@@ -85,6 +89,7 @@ export class DashboardComponent {
   logout(){
     localStorage.removeItem('currentuser')
     localStorage.removeItem('currentacno')
+    localStorage.removeItem('token')
     this.router.navigateByUrl('')
   }
 
@@ -93,6 +98,22 @@ export class DashboardComponent {
     this.acno=JSON.parse(localStorage.getItem('currentacno') || '')
   }
 
+  oncancel(){
+    this.acno=""
+  }
+  delete(event:any){
+    this.ds.deleteacc(event).subscribe((result:any)=>{
+      alert(result.message)
+      this.logout()
+    
+    },
+    result=>{
+    
+      alert(result.error.message)
+    
 
+    })
+    // alert(event)
 
+  }
 }

@@ -7,7 +7,7 @@
     <!-- currectly dashboard -> to local host4200 ->transaction -> we use the / -->
     <button  type="submit" class="btn bg-danger p-1 me-5 mt-0 div2" (click)="logout()">logout</button>
     <button  type="submit" class="btn bg-danger p-1 me-5 mt-3 div2" (click)="deleteconfirm()" >delete</button>
-  <app-deleteconfirm [item]="acno"></app-deleteconfirm>
+  <app-deleteconfirm (onCancel)="oncancel()" (onDelete)="delete($event)" [item]="acno" ></app-deleteconfirm>
 
 
 

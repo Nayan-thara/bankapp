@@ -11,12 +11,14 @@ export class TransactionComponent {
   acno:any
   transaction:any
 
-  constructor(private ds:DataService){//page open avumbo thane kanikan constructeryl koduknam
-    this.acno=this.ds.currentacno
-    this.transaction=this.ds.gettransaction(this.acno)
-    // console.log(this.transaction);
-    
-
+  constructor(private ds:DataService){
+    this.acno=JSON.parse(localStorage.getItem('currentacno') || "")
+    this.ds.gettransaction(this.acno).subscribe((result:any)=>{
+      this.transaction=result.message
+    },
+    (result:any)=>{
+      alert(result.error.message)
+    })
   }
 
 }

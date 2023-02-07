@@ -26,16 +26,14 @@ export class RegisterComponent {
 
     //checking if the form valid or not
     if(this.registerForm.valid){
-      const result = this.ds.register(acno, uname, psw)  // calling register in servce
-    if (result) {
-      alert("registration success")
-      this.router.navigateByUrl('')
-    }
-    else {
-      alert("registration failed")
-      this.router.navigateByUrl('')
-    }
-
+      const result = this.ds.register(acno, uname, psw).subscribe((result:any)=>{
+        alert(result.message)
+        this.router.navigateByUrl('')
+      },                  //to show user already exist
+      result=>{
+        alert(result.error.message)
+        
+      })
     }
     else{
       alert('invalid form')

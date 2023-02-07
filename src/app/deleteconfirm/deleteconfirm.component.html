@@ -1,5 +1,5 @@
 <div *ngIf='item' class="container  text-center " style="width:59%; background:  rgba(8, 19, 55, 0.7); padding: 3%; border-radius: 5%; box-shadow: 0 15px 25px rgba(0, 0, 0, 0.485); ">
 <h4 class="text-white">Are you sure to DELETE  account {{item}}?</h4> 
-<button class="btn btn-outline-info mt-5">yes</button>
-<button class="ms-3 btn btn-outline-info mt-5">NO</button>
+<button (click)="delete()" class="btn btn-outline-info mt-5">YES</button>
+<button class="ms-3 btn btn-outline-info mt-5" (click)="cancel()">NO</button>
 </div>

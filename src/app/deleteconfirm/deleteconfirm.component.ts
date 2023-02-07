@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-deleteconfirm',
@@ -7,6 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DeleteconfirmComponent {
 
-@Input() item:String | undefined
+
+//event creation
+
+@Output() onCancel=new EventEmitter() //@output -> child to parent(dashboard) ,  can only  be shared to selector ,selector in dashboard
+@Output() onDelete=new EventEmitter()
+
+@Input() item:String | undefined  //parent to child decorator
+
+cancel(){
+  this.onCancel.emit()  //event call using emit
+}
+delete(){
+  this.onDelete.emit(this.item)  //sharing acno with parent
+
+}
 
 }
